@@ -1,0 +1,28 @@
+		   </div>
+       </div>
+        <div id="breadcrumb">
+        Ti trovi in: <a href="homephp.php" tabindex="2">Home</a>/<a href="testDrive.php">Test Drive</a> 
+      </div>
+      <div id="menu">
+         <ul>
+            <li><a href="homephp.php"><span xml:lang="en" tabindex="2">Home</span></a></li>
+            <li><a href="new.php" tabindex="3">Nuove</a></li>
+            <li><a href="used.php" tabindex="4">Usate</a></li>
+            <li><a href="info.php" tabindex="5">Info</a></li>
+            <li><a href="testDrive.php" tabindex="6">Test Drive</a></li>
+            <li><a href="chiSiamo.php" tabindex="7">Chi Siamo</a></li>
+         </ul>
+      </div>
+	<div id="content" >
+		<p>Abbiamo a disposizione dei test drive per le nostre auto nuove in vendita.</br> Prenotalo ora!</p>
+		<div id="phpConForm">
+			<?php
+			if(!$_SESSION["nome"]){
+				echo("Devi essere registrato per poter prenotare un test drive!");
+			}
+			else{
+				include "formModello.php";
+}
+				?>
+		</div>
+	</div>	

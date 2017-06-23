@@ -1,0 +1,7 @@
+<?php
+echo file_get_contents("form21.txt");
+$marca=$result_explode[0];
+$modello=$result_explode[1];
+echo file_get_contents("form22.txt");
+?>
+

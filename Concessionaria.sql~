@@ -1,0 +1,289 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4deb1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Creato il: Mag 09, 2017 alle 11:10
+-- Versione del server: 5.7.17-0ubuntu0.16.10.1
+-- Versione PHP: 7.0.15-0ubuntu0.16.10.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
+SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS;
+SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION;
+SET NAMES utf8;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
+SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0; 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `Concessionaria`
+--
+
+-- Dump della struttura del database Concessionaria
+CREATE DATABASE IF NOT EXISTS `Concessionaria` ;
+USE `Concessionaria`;
+
+-- Dump della struttura di tabella Concessionaria.Auto
+DROP TABLE IF EXISTS `Auto`;
+CREATE TABLE `Auto` (
+  `Num_Telaio` varchar(17) NOT NULL,
+  `marca` varchar(30) NOT NULL,
+  `modello` varchar(30) NOT NULL,
+  `optional` varchar(100) NOT NULL,
+  `cilindrata` int(11) NOT NULL,
+  `alimentazione` varchar(30) NOT NULL,
+  `km_percorsi` int(11) NOT NULL DEFAULT '0',
+  `nuova` tinyint(1) NOT NULL DEFAULT '1',
+  `prezzo` int(11) DEFAULT NULL,
+  `mesiGaranzia` int(4) NOT NULL DEFAULT '24',
+  `Descrizione` varchar(200) DEFAULT NULL,
+  `Immagine` varchar(30) NOT NULL,
+  PRIMARY KEY (`Num_Telaio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dump dei dati della tabella Concessionaria.Auto: ~0 rows (circa)
+LOCK TABLE `Auto` WRITE;
+INSERT INTO `Auto` (`Num_Telaio`, `marca`, `modello`, `optional`, `cilindrata`, `alimentazione`, `km_percorsi`, `nuova`, `prezzo`, `mesiGaranzia`, `Descrizione`, `Immagine`) VALUES
+('12LKNMVE46587BF', 'Alfa Romeo', 'Giulia QV', 'Full', 2980, 'Benzina', 0, 0, 89000, 24, 'Alfa Romeo Giulia: sinonimo di sportività ed eleganza, segna la rinascita del prestigioso Marchio di Arese ai nostri giorni. La nuova Alfa Romeo Giulia promette eleganza e sportività ad un prezzo concorrenziale. Alfa Romeo, la meccanica delle emozioni' , 'img/GiuliaNuova.jpeg'),
+('12LKOYT8965KJUR', 'Volkswagen', 'Passat', 'Base', 1854, 'Diesel', 0, 0, 24980, 24, 'Auto senza componenti scandalo Dieselgate', 'img/PassatNuova.jpeg'),
+('18ER96SDC58A54P', 'Audi', 'A3', 'Sportback', 1489, 'Diesel', 0, 0, 24500, 24, 'Versione SportBack', 'img/A3Nuova.jpeg'),
+('25POLIKUJYHTGR1', 'Lancia', 'Y', '30Th Anniversary', 1200, 'Benzina', 20000, 1, 9500, 12, 'Versione Elefantino Blu', 'img/YUsata.jpg'),
+('MLTPLFTT9834591', 'Fiat', 'multipla', 'no', 1200, 'benzina', 0, 0, 23, 24, 'Auto con motore multijet di altissima affidabilità', ''),
+('35OPIYT428OYTH1', 'Alfa Romeo', 'Mito', 'Base', 1400, 'Benzina', 0, 0, 15000, 24, 'Auto con impianto Harman Kardon di serie', 'img/MitoNuova.jpeg'),
+('85UJTG143KJUTYH', 'Alfa Romeo', 'Giulietta Veloce', 'Sport', 2000, 'Benzina', 0, 0, 27000, 24, 'Auto con impianto Bose di serie', 'img/GiuliettaNuova.jpeg'),
+('BMWSTP4582AX22P', 'Bmw', '320D', 'Full', 1996, 'Diesel', 0, 0, 37000, 24, 'Auto con tettuccio panoramico di serie', 'img/320DNuova.jpg'),
+('CTR857452JGHSFS', 'Citroen', 'C3', 'Base', 1300, 'Diesel', 89645, 1, 5000, 0, 'Auto con interni conciati male', 'img/C3Usata.jpg'),
+('DHTSUMTR8857422', 'Dahiatsu', 'Materia', 'Full', 1459, 'Diesel', 130000, 1, 12000, 12, 'Auto con cambio automatico singola frizione', 'img/MateriaUsata.jpg'),
+('DLT666741258DEL', 'Lancia', 'Delta', 'Martini', 2000, 'Benzina', 56000, 1, 75000, 12, 'Auto molto rara in limited edition', 'img/DeltaUsata.jpg'),
+('FLV7541275FULVI', 'Lancia', 'Fulvia', 'HF Full', 1600, 'Benzina', 74968, 1, 73499, 12, 'Auto storica iscritta al registro storico Lancia', 'img/FulviaUsata.jpg'),
+('FTTPTT578965412', 'Fiat', 'Punto', 'Emotion', 1296, 'Diesel', 130000, 1, 12000, 12, 'Auto con tagliando appena eseguito da ex proprietario',  'img/PuntoUsata.jpg'),
+('PGGUT57896325JK', 'Peugeot', '207', 'Base', 1300, 'Diesel', 89645, 1, 5000, 0, 'Auto con chilometraggio certificato', 'img/207Usata.jpeg'),
+('RNTCL7455845565', 'Renault', 'Clio', 'Base', 1196, 'Benzina', 100236, 1, 5600, 12, 'Auto con una boll di verniciatura sul cofano', 'img/ClioUsata.jpg'),
+('SAAB93SC4565246', 'Saab', '93S', 'Full', 1986, 'Benzina', 156000, 1, 13500, 12, 'Auto ancora in perfette condizioni', 'img/935Usata.jpg');
+
+UNLOCK TABLES;
+
+
+
+-- Dump della struttura di tabella Concessionaria.Cliente
+DROP TABLE IF EXISTS `Cliente`;
+CREATE TABLE IF NOT EXISTS `Cliente` (
+  `Username` varchar(20) NOT NULL,
+  `Nome` varchar(20) NOT NULL,
+  `Cognome` varchar(20) NOT NULL,
+  `Pswd` varchar(20) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `Telefono` bigint(11) DEFAULT NULL,
+  PRIMARY KEY (`Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dump dei dati della tabella Concessionaria.Cliente: ~0 rows (circa)
+
+LOCK TABLE `Cliente` WRITE;
+INSERT INTO `Cliente` (`Username`, `Nome`, `Cognome`, `Pswd`, `Email` , `Telefono`) VALUES
+('ChuckNorris', 'Chuck', 'Norris', 'calciorotante', 'chucknorris@dreamcars.it', 423658974),
+('user', 'user', 'user', 'user', 'user@dreamcars.it', 12345678),
+('DStocco', 'Davide', 'Stocco', 'cagnone','dstoc@dreamcars.it', 337828293),
+('DufferSmitz', 'Smitz', 'Duffersmitz', 'password', 'duffer@dreamcars.it', 45745145),
+('PirlogCristina', 'Cristina', 'Pirlog', 'dwarfex', 'pircri@dreamcars.it', 424896523),
+('Yorbabalinda', 'Balinda', 'Yorbalinda', 'password', 'robaba@dreamcars.it', 33396028);
+
+UNLOCK TABLES;
+
+
+
+-- Dump della struttura di tabella Concessionaria.Dipendente
+DROP TABLE IF EXISTS `Dipendente`;
+CREATE TABLE IF NOT EXISTS `Dipendente` (
+  `Matricola` varchar(20) NOT NULL,
+  `nome` varchar(20) NOT NULL,
+  `cognome` varchar(20) NOT NULL,
+  `telefono` bigint(11) NOT NULL,
+  `mail` varchar(30) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  PRIMARY KEY (`Matricola`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dump dei dati della tabella Concessionaria.Dipendente: ~0 rows (circa)
+
+LOCK TABLE `Dipendente` WRITE;
+INSERT INTO `Dipendente` (`Matricola`, `nome`, `cognome`, `telefono`, `mail`, `password`) VALUES
+('pierfav', 'Pierluca', 'Favaron', 31265741, 'pierfav@dreamcars.it', 'PierFav' ),
+('admin', 'admin', 'admin', 31265991, 'admin@dreamcars.it', 'admin'),
+('edocarex', 'Edoardo', 'Caregnato', 31255447, 'edocarex@dreamcars.it', 'EdCar'),
+('luiner', 'Luigi', 'Neri', 31296851, 'luiner@dreamcars.it', 'LuiNer'),
+('paorizz', 'Paolo', 'Rizzardo', 31266985, 'paorizz@dreamcars.it', 'PaoRiz'),
+('davnob', 'Davide', 'Nobiliati', 31255741, 'davnob@dreamcars.it', 'DavNob'),
+('marba', 'Mario', 'Basso', 31269741, 'marba@dreamcars.it', 'MarBas'),
+('enribonny', 'Enrico', 'Bonato', 31289657, 'enribonny@dreamcars.it', 'EnriBon'),
+('mariluci', 'Maria', 'Lucita', 31274569, 'mariluci@dreamcars.it', 'MariLuc'),
+('fiscod', 'Fiscale', 'Codice', 31255963, 'fiscod@dreamcars.it', 'FisCod'),
+('matbon', 'Mattia', 'Bonato', 31296874, 'matbon@dreamcars.it', 'MatBon'),
+('marro', 'Maria', 'Rossi', 31265774, 'marro@dreamcars.it', 'MariRos'),
+('dorros', 'Dora', 'Rosil', 31255459, 'dorros@dreamcars.it', 'DorRos'),
+('federo', 'Federica', 'Rossi', 31269854, 'federo@dreamcars.it', 'FedRos');
+
+UNLOCK TABLES;
+
+
+-- Dump della struttura di tabella Concessionaria.Intervento
+DROP TABLE IF EXISTS `Intervento`;
+CREATE TABLE IF NOT EXISTS `Intervento` (
+  `Id_Intervento` int(10) NOT NULL AUTO_INCREMENT,
+  `Cf_Meccanico` varchar(16) NOT NULL,
+  `Id_Riparazione` int(10) NOT NULL,
+  `descrizione` varchar(200) NOT NULL,
+  `Data_intervento` date NOT NULL,
+  `costo` int(10) NOT NULL,
+  `oretot` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`Id_Intervento`),
+  KEY `Id_Riparazione` (`Id_Riparazione`),
+  CONSTRAINT `Id_Riparazione` FOREIGN KEY (`Id_Riparazione`) REFERENCES `Riparazione` (`Id_Riparazione`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dump dei dati della tabella Concessionaria.Intervento: ~0 rows (circa)
+LOCK TABLE `Intervento` WRITE;
+INSERT INTO `Intervento` (`Id_Intervento`,`Cf_Meccanico`, `Id_Riparazione`, `descrizione`, `Data_Intervento`, `costo`, `oretot`) VALUES
+(1, 'MRALCLF547HHDG5G', 1, 'Sostituzione turbina Maggiornata', '2016-06-02', 150, 3),
+(2, 'MRALCLF547HHDG5G', 5, 'Sostituzione braccio cambio', '2016-06-09', 35, 4),
+(3, 'MRALCLF547HHDG5G', 5, 'Sostituzione silent block anteriore', '2016-07-04', 70, 1),
+(4, 'MRALCLF547HHDG5G', 6, 'Sotituzione centralina' , '2016-03-09', 570, 2),
+(5, 'MRALCLF547HHDG5G', 5, 'Sostituzione impianto elettrico avantreno' , '2016-07-04', 1500, 8),
+(6, 'MRARS56M44L754FR', 3, 'Sostituzione supporto motore', '2016-05-31', 600, 7),
+(7, 'MRARS56M44L754FR', 3, 'Sostituzione supporto cambio' , '2016-06-02', 40, 1),
+(8, 'MRARS56M44L754FR', 5, 'Sostituzione boccola anteriore' , '2016-07-04', 30, 1),
+(9, 'MRARS56M44L754FR', 5, 'Sostituzione braccio supporto carrozzeria' , '2016-07-06', 130, 1),
+(10, 'MRARS56M44L754FR', 7, 'Sostituzione testata ed albero a camme', '2016-07-02', 970, 5),
+(11, 'MRARS56M44L754FR', 7, 'Sostituzione cinghia di distribuzione', '2016-07-12', 75, 5),
+(12, 'RSSMRA74M15C070D', 2, 'Sostituzione FAP', '2016-03-06', 950, 15),
+(13, 'RSSMRA74M15C070D', 2, 'Sostituzione Centralina tarocca' , '2016-03-07', 1500, 4),
+(14, 'RSSMRA74M15C070D', 2, 'Sostituzione iniettori', '2016-03-08', 3700, 15),
+(15, 'RSSMRA74M15C070D', 4, 'Sostituzione guarnizione di testa con silicone isolante', '2016-06-09', 170, 6),
+(16, 'RSSMRA74M15C070D', 2, 'Rabbocco olio motore e olio cambio', '2016-03-06', 35, 1);
+
+UNLOCK TABLES;
+
+
+-- Dump della struttura di tabella Concessionaria.Riparazione
+DROP TABLE IF EXISTS `Riparazione`;
+CREATE TABLE IF NOT EXISTS `Riparazione` (
+  `Id_Riparazione` int(10) NOT NULL AUTO_INCREMENT,
+  `Numero_Telaio` varchar(17) NOT NULL,
+  `descrizione` varchar(100) DEFAULT NULL,
+  `costorip` int(11) NOT NULL DEFAULT '0',
+  `dataInizio` date NOT NULL,
+  `ora` time DEFAULT NULL,
+  PRIMARY KEY (`Id_Riparazione`),
+  KEY `Numero_Telaio` (`Numero_Telaio`),
+  CONSTRAINT `Numero_Telaio` FOREIGN KEY (`Numero_Telaio`) REFERENCES `Auto` (`Num_Telaio`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dump dei dati della tabella Concessionaria.Riparazione: ~0 rows (circa)
+LOCK TABLE `Riparazione` WRITE;
+INSERT INTO `Riparazione` (`Numero_Telaio`, `descrizione`, `costorip`, `dataInizio`, `ora`) VALUES
+('BMWSTP4582AX22P', 'Sostituzione Turbina', 7500, '2016-06-02', '14:24:57'),
+('12LKOYT8965KJUR', 'Sostituzione componenti scandalo Dieselgate', 14500, '2016-03-06', '17:23:57'),
+('DHTSUMTR8857422', 'Sostituzione supporti', 7500, '2016-05-31', '15:26:25'),
+('PGGUT57896325JK', 'Sostituzione guarnizione di testa', 800, '2016-06-09', '16:06:52'),
+('CTR857452JGHSFS', 'Sostituzione cambio', 2900, '2016-07-04', '14:27:23'),
+('RNTCL7455845565', 'Sostituzione centralina', 2500, '2016-03-09', '14:44:53'),
+('85UJTG143KJUTYH', 'Sostituzione blocco motore', 0, '2016-07-02', '17:23:55');
+
+UNLOCK TABLES;
+
+
+
+-- Dump della struttura di tabella Concessionaria.StoricoVendite
+DROP TABLE IF EXISTS `StoricoVendite`;
+CREATE TABLE IF NOT EXISTS `StoricoVendite` (
+  `Num_Telaio` varchar(17) NOT NULL,
+  `Cliente` varchar(20) NOT NULL,
+  `Data` date NOT NULL,
+  `Prezzo` int(10) NOT NULL,
+  PRIMARY KEY (`Num_Telaio`,`Cliente`),
+  CONSTRAINT `Num_Telaio` FOREIGN KEY (`Num_Telaio`) REFERENCES `Auto` (`Num_Telaio`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dump dei dati della tabella Concessionaria.StoricoVendite: ~0 rows (circa)
+
+LOCK TABLE `StoricoVendite` WRITE;
+  
+INSERT INTO `StoricoVendite` (`Num_Telaio`, `Cliente`, `Data`, `Prezzo`) VALUES
+('12LKOYT8965KJUR', 'ChuckNorris', '2016-07-04', 8900),
+('DHTSUMTR8857422', 'Yorbabalinda', '2016-04-11', 24500),
+('PGGUT57896325JK', 'ChuckNorris', '2016-07-03', 27000),
+('BMWSTP4582AX22P', 'DufferSmitz', '2016-05-31', 37000),
+('CTR857452JGHSFS', 'DufferSmitz', '2016-03-15', 5000),
+('PGGUT57896325JK', 'DufferSmitz', '2016-06-09', 5000),
+('RNTCL7455845565', 'PirlogCristina', '2016-07-02', 5600),
+('85UJTG143KJUTYH', 'PirlogCristina', '2016-07-02', 5600),
+('SAAB93SC4565246', 'PirlogCristina', '2016-06-15', 13500),
+('MLTPLFTT9834591', 'user', '2017-03-03', 7770),
+('12LKNMVE46587BF', 'admin', '2015-08-11', 24980),
+('DLT666741258DEL', 'admin', '2014-03-03', 75000),
+('FLV7541275FULVI', 'user', '2017-04-16', 73499);
+
+UNLOCK TABLES;
+
+
+
+-- Dump della struttura di tabella Concessionaria.Testdrive
+DROP TABLE IF EXISTS `Testdrive`;
+CREATE TABLE IF NOT EXISTS `Testdrive` (
+  `Id` int(10) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) NOT NULL,
+  `Numero_Telaio` varchar(17) NOT NULL,
+  `Data` date NOT NULL,
+  `Ora` time DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `Numero_Telaio_FK` (`Numero_Telaio`),
+  CONSTRAINT `Numero_Telaio_FK` FOREIGN KEY (`Numero_Telaio`) REFERENCES `Auto` (`Num_Telaio`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dump dei dati della tabella Concessionaria.Testdrive: ~0 rows (circa)
+
+
+
+drop function if exists estraiCostoInt;
+delimiter ||
+create function EstraiCostoInt(idrip int(10)) returns int
+begin
+declare somma int;
+set somma = 0;
+SELECT SUM(Intervento.costo) INTO somma FROM Intervento WHERE Intervento.Id_Riparazione=idrip;
+return somma;
+end ;||
+delimiter ;
+
+
+DELIMITER ;;
+ CREATE TRIGGER modCosto 
+ before INSERT ON Riparazione 
+for each row  
+begin
+    set new.costorip = estraiCostoInt(Id_Riparazione);
+end ;;
+DELIMITER ;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT;
+SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS;
+SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION;
+SET SQL_NOTES=@OLD_SQL_NOTES; 
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+

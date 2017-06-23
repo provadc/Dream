@@ -1,0 +1,80 @@
+<?php 
+include "config.php"; 
+session_start(); 
+?><!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it"> 
+   <head> 
+      <meta http-equiv="Content-type" content="txt/html; charset=utf-8" /> 
+      <title> Area Personale </title> 
+      <meta name="title" content="Concessionaria Dreamcars" /> 
+      <meta name="description" content="" /> 
+      <!--da mettere robot.txt che non vogliamo indicizzare i cazzi degli altri su google, meglio tutto nel deepweb--> 
+      <link rel="shortcut icon" href="img/logo-min.jpg" /> 
+      <link href="style.css" rel="stylesheet" type="text/css"> 
+      <link href="print.css" rel="stylesheet" type="text/css" media="print"> 
+       <script type="text/javascript"  src="javascript.js"></script> 
+   </head> 
+   <body onload="start()" > 
+      <div id="header"> 
+          <img id ="logoDC2" src="img/logoDC2.png" />
+         <h1><span xml:lang="en">DreamCars</span></h1>
+         
+<?php 
+      if($_SESSION["user"]){ 
+        echo("Benvenuto, ".$_SESSION["nome"]." "); 
+        echo("<a href='logout.php'>Logout</a>"); 
+      } 
+?>   
+     </div> 
+        <div id="breadcrumb"> 
+        Ti trovi in: <a href="home.php" tabindex="2">Home</a> / <a href="areaPersonale.php" tabindex="1">Area Personale</a> / Visualizza riparazioni
+      </div> 
+       
+      <div id="menu">
+         <ul>
+            <a href="home.php"><span xml:lang="en" tabindex="2"><li>Home</li></span></a>
+            <a href="new.php" tabindex="3"><li>Nuove</li></a>
+            <a href="used.php" tabindex="4"><li>Usate</li></a>
+            <a href="info.php" tabindex="5"><li>Info</li></a>
+	        <a href="testDrive.php" tabindex="7"><li>Test Drive</li></a>
+            <a href="chiSiamo.php" tabindex="6"><li>Chi Siamo</li></a>  
+	</ul>
+      </div>
+
+  <div id="tabs">
+     <ul id ="linkLog">
+     <li><a href='gestioneAnnunci.php'>Gestione Annunci</a></li>
+     <li ><a href="gestioneAccountDipendenti.php" tabindex="8">Gestione Account</a></li>
+     <li ><a href="gestioneRiparazioniDipendenti.php">Gestione Riparazioni</a> </li>
+     </ul>
+    </div>
+       
+      <div id="contenuto"> 
+  <p>Qui puoi visualizzare lo stato delle tue riparazioni</p> 
+       </div> 
+
+	<div id='listaAuto'>
+	<?php
+		$autoutenteq="select StoricoVendite.Num_Telaio as telaio, Auto.Marca as marca, Auto.Modello as modello from StoricoVendite,Auto,Riparazione where StoricoVendite.Cliente='".$_SESSION["user"]."' and Auto.Num_Telaio=StoricoVendite.Num_Telaio and Riparazione.Numero_Telaio=StoricoVendite.Num_Telaio";
+		$autoutente=mysqli_query($conn,$autoutenteq);
+		if($autoutente && $autoutente->num_rows>0){
+			echo"<h1>le tue auto in assistenza:</h1>";
+			while($row=$autoutente->fetch_assoc()){
+				echo "<div class='autoInRiparazione'>
+					<p>marca: ".$row['marca']."</p>
+					<p>modello: ".$row['modello']."</p>
+					<a href='listaRiparazioni.php?telaio=$row[telaio]'>visualizza riparazioni</a>					
+					</div>";
+			}	
+		}
+		else
+			echo "non hai auto in assistenza";
+	?>
+	</div> 
+
+      <footer> 
+           <p><small>Il sito è stato creato per un progetto nell'ambito del corso di <a href="http://docenti.math.unipd.it/gaggi/tecweb/">Tecnologie Web</a> </small> 
+           </p> 
+    </footer> 
+    </body> 
+</html> 

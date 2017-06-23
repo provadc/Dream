@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+   <head>
+      <meta http-equiv="Content-type" content="txt/html; charset=utf-8" />
+      <title> DreamCars  </title>
+      <meta name="title" content="Concessionaria Dreamcars" />
+      <link href="style.css" rel="stylesheet" type="text/css">
+      <script type="text/javascript" src="javascript.js"></script>
+    </head>
+    <div id="header">
+         <h1><span xml:lang="en">DreamCars</span></h1><img id ="logoDC2" src="img/logoDC2.jpg" />
+        <div id="login" >
+           <a href="Registrati.html">Registrati</a> /             
+           <a href="login.html#tab1"><span xml:lang="en" tabindex="1">Login</span></a>
+       </div>
+    </div>  
+    <body>
+	<!--<?php include('registrati.php') ?>-->
+        <div id="breadcrumb">
+            Ti trovi in: <a href="home.html" tabindex="2">Home</a> / <a href="registrati.html">Registrati</a>
+        </div>
+        <h2 id="registra">Registrazione Nuovo utente</h2>    
+    	<div id="container">
+		  <div class="content">
+        <form action="registrati.php" name ="campireg" method="POST">
+            <h2 id="log">Registrati</h2>
+            <p>Nome</p>
+            <input name="nome" id="nome" type="text" onblur="" />
+            <p>Cognome</p>
+            <input name="cognome" id="cognome" type="text" onblur="" /><br>
+            <!--<p>Data di Nascita</p>
+            <input id="datanascita" type="text" onblur="" /><br>-->
+            <p>Username</p>
+            <input name="username" id="username" type="text" onblur="" /><br>
+            <p>Telefono</p>
+            <input id="telefono" type="text" onblur="" /><br>
+            <!--<input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other<br>-->
+	    <p>Password</p>
+	    <input name="password" id="password" type="password" onblur="" /><br>
+	    <p>Conferma password</p>
+	    <input id="password2" type="password" onblur="" /><br>
+	    <input type="submit" value="Registrami" onclick="checkInput()"/>
+        </form>
+    </div>
+    </div>
+            </body>
+    <footer>
+           <p><small>Il sito è stato creato per un progetto nell'ambito del corso di <a href="http://docenti.math.unipd.it/gaggi/tecweb/">Tecnologie Web</a> </small>
+           </p>
+    </footer>
+</html>

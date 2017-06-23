@@ -1,0 +1,21 @@
+<?php
+session_start();
+echo file_get_contents("home1.txt");
+	 if(!$_SESSION["user"]){
+		 if($_SESSION["dipendente"]){
+					echo("Lavora ZIOCAN, ".$_SESSION["nome"]. " ");
+					echo("<a href='inserimento.php'>Inserisci annuncio</a>"." ");
+					echo("<a href='rimozione.php'>Rimuovi annuncio</a>"." ");
+					echo("<a href='logout.php'>Logout</a>");}
+					else{
+						echo("<a href='registrati.html'>Registrati</a> /             
+							<a href='login.html#tab1'><span xml:lang='en' tabindex='1'>Login</span></a>");}
+					}
+					else{
+						echo("Benvenuto, ".$_SESSION["nome"]." ");
+						echo("<a href='logout.php'>Logout</a>");}
+		}
+	}
+echo file_get_contents("home2.txt");
+?>
+

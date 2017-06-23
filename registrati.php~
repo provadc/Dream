@@ -1,0 +1,26 @@
+
+<?php
+include "config.php";
+
+$nome = $_POST['nome'];
+$cognome = $_POST['cognome'];
+$username =$_POST['username'];
+$password=$_POST['password'];
+$tel=$_POST['telefono'];
+
+//controlli sui dati in input
+
+
+//inserting data order
+$toinsert = "INSERT INTO Cliente (Username, Nome, Cognome, Password, Telefono)
+			  VALUES ('$username','$nome', '$cognome', '$password','$tel')";
+//declare in the order variable
+$result = mysqli_query($conn, $toinsert);
+//order executes
+if($result){
+	echo("Inserimento avvenuto correttamente");} 
+	else{
+	echo("Inserimento non eseguito");}
+mysqli_close($conn);
+?>
+

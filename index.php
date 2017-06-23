@@ -8,7 +8,6 @@ if(!$_SESSION["user"]){
         echo("Buon lavoro, ".$_SESSION["nome"]."");
         echo("</br><a href='/DreamCars/Pagine/AreaPersonaleDipendenti/AreaPersonaleDipendenti.php'>Area personale </a>"." / ");
         echo("<a href='/DreamCars/Pagine/LoginRegistrati/logout.php'>Logout</a>");
-        
     }
     else{
         echo("<a href='/DreamCars/Pagine/LoginRegistrati/registrati.html'>Registrati</a> /     
